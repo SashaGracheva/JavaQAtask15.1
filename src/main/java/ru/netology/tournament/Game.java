@@ -18,7 +18,7 @@ public class Game {
     public Player findByName(String name) {
 
         for (int i = 0; i < registeredPlayers.size(); i++) {
-            if (registeredPlayers.get(i).getName() == name) {
+            if (registeredPlayers.get(i).getName().equals(name)) {
                 return registeredPlayers.get(i);
             }
         }
@@ -33,17 +33,14 @@ public class Game {
 
         if (first != null & second != null) {
 
-            for (int i = 0; i < registeredPlayers.size(); i++) {
-
-                if (first.getStrength() == second.getStrength()) {
-                    result = 0;
-                } else if (first.getStrength() > second.getStrength()) {
-                    result = 1;
-                } else {
-                    result = 2;
-                }
-
+            if (first.getStrength() == second.getStrength()) {
+                result = 0;
+            } else if (first.getStrength() > second.getStrength()) {
+                result = 1;
+            } else {
+                result = 2;
             }
+
         } else if (first == null & second == null) {
             throw new NotRegisteredException("Players with name" + first + " and " + second + "not registered");
 
